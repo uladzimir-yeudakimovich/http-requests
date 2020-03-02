@@ -7,7 +7,8 @@ export class ServerService {
 
   storeService(servers: any[]) {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.post('https://udemy-ng-http-7c72f.firebaseio.com/data.json', servers, {headers: headers});
+    // return this.http.post('https://udemy-ng-http-7c72f.firebaseio.com/data.json', servers, {headers: headers});
+    return this.http.put('https://udemy-ng-http-7c72f.firebaseio.com/data.json', servers, {headers: headers});
   }
 
   getServers() {

@@ -14,7 +14,7 @@ export class ServerService {
   }
 
   getServers() {
-    return this.http.get('https://udemy-ng-http-7c72f.firebaseio.com/data')
+    return this.http.get('https://udemy-ng-http-7c72f.firebaseio.com/data.json')
       .map(
         (response) => {
           for (let server in response) {
@@ -28,6 +28,10 @@ export class ServerService {
           return Observable.throw('Something went wrong');
         }
       );
+  }
+
+  getAppName() {
+    return this.http.get('https://udemy-ng-http-7c72f.firebaseio.com/data/appName.json');
   }
 
 }

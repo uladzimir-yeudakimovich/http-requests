@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import 'rxjs/Rx';
 
 @Injectable()
 export class ServerService {
@@ -12,7 +13,15 @@ export class ServerService {
   }
 
   getServers() {
-    return this.http.get('https://udemy-ng-http-7c72f.firebaseio.com/data.json');
+    return this.http.get('https://udemy-ng-http-7c72f.firebaseio.com/data.json')
+      .map(
+        (response) => {
+          for (let server in response) {
+            response[server].name = 'FETCHED_' + response[server].name;
+          }
+          return response;
+        }
+      );
   }
 
 }
